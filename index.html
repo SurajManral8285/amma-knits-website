@@ -225,12 +225,14 @@ footer a {
   margin: 0 10px;
   text-decoration: none;
   font-weight: bold;
+  display: inline-block; /* make links visible and tappable */
+  font-size: 16px;
 }
 
-/* ===== RESPONSIVE ===== */
 @media(max-width:768px){
   .hero-text h1 { font-size: 28px; }
   .hero { height: 60vh; }
+  footer a { display: block; margin: 5px 0; } /* stack vertically on mobile */
 }
 </style>
 </head>
@@ -290,8 +292,8 @@ Chat on WhatsApp
   <p>📍 Sector 104, Surat Nagar Phase 2, Gurugram, Haryana</p>
   <p>📞 8285007827 | ✉️ surajmanral2002@gmail.com</p>
   <p>
-    <a href="https://www.instagram.com/vlogs_bysuraj?igsh=MTF0cmZya2Y4dDh1dA==" target="_blank">Instagram</a> |
-    <a href="https://youtube.com/@vlogs_bysuraj?si=O4jW0I9vggU4xEDJ" target="_blank">YouTube</a>
+    <a href="https://instagram.com/your_instagram" target="_blank">Instagram</a>
+    <a href="https://youtube.com/your_youtube" target="_blank">YouTube</a>
   </p>
   <p>© 2026 Amma’s Knits</p>
 </footer>
