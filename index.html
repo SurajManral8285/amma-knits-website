@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amma’s Knits</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Poppins', Arial, sans-serif;
+  background: #f8f6f3;
+  color: #333;
+  scroll-behavior: smooth;
+}
+
+/* ===== TOP BAR ===== */
+.offer-bar {
+  background: #111;
+  color: #fff;
+  text-align: center;
+  padding: 8px;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+/* ===== HERO SLIDER ===== */
+.hero {
+  position: relative;
+  height: 80vh;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.hero-text {
+  position: absolute;
+  bottom: 20%;
+  left: 8%;
+  color: white;
+  max-width: 400px;
+}
+
+.hero-text h1 {
+  font-size: 40px;
+  margin: 0;
+}
+
+.hero-text p {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.hero-text button {
+  padding: 12px 25px;
+  background: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ===== PRODUCTS ===== */
+.container {
+  width: 95%;
+  max-width: 1200px;
+  margin: 60px auto;
+}
+
+.products {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.product {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.07);
+  transition: 0.4s ease;
+}
+
+.product:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+}
+
+.product-img {
+  overflow: hidden;
+}
+
+.product img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.product:hover img {
+  transform: scale(1.1);
+}
+
+.product-details {
+  padding: 20px;
+}
+
+.product-details h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.price {
+  color: #b76e79;
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+.product button {
+  width: 100%;
+  padding: 12px;
+  background: #111;
+  color: white;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.product button:hover {
+  background: #b76e79;
+}
+
+/* ===== ABOUT ===== */
+.about {
+  background: #fff;
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.about h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.about p {
+  max-width: 700px;
+  margin: auto;
+  color: #555;
+}
+
+/* ===== REVIEWS ===== */
+.reviews {
+  background: #f1ece7;
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.review-grid {
+  display: grid;
+  gap: 25px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.review {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* ===== WHATSAPP FLOAT ===== */
+.whatsapp-float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: #25D366;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #111;
+  color: #fff;
+  text-align: center;
+  padding: 30px 15px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .hero-text h1 { font-size: 28px; }
+  .hero { height: 60vh; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="offer-bar">
+FREE DELIVERY IN GURUGRAM | HANDMADE WITH LOVE ❤️
+</div>
+
+<!-- HERO SLIDER -->
+<div class="hero">
+  <div class="slide active" style="background-image:url('https://i.ibb.co/t64c7xQ/1.jpg')"></div>
+  <div class="slide" style="background-image:url('https://i.ibb.co/qLbx0H1h/2.jpg')"></div>
+  <div class="slide" style="background-image:url('https://i.ibb.co/rGcvDkH5/3.jpg')"></div>
+
+  <div class="hero-text">
+    <h1>Amma’s Knits</h1>
+    <p>Luxury handmade warmth for your winter.</p>
+    <button onclick="document.querySelector('.products').scrollIntoView()">Shop Now</button>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<div class="container">
+  <div class="products" id="productList"></div>
+</div>
+
+<!-- ABOUT -->
+<div class="about">
+  <h2>Crafted With Love</h2>
+  <p>
+  Every piece from Amma’s Knits is handcrafted with premium wool,
+  passion, and over 20 years of experience.
+  Not just sweaters — memories stitched with warmth.
+  </p>
+</div>
+
+<!-- REVIEWS -->
+<div class="reviews">
+  <h2>What Our Customers Say</h2>
+  <div class="review-grid">
+    <div class="review">“Absolutely beautiful and soft!” — Neha</div>
+    <div class="review">“Feels premium and luxurious.” — Ritu</div>
+    <div class="review">“Better than big brands.” — Pooja</div>
+  </div>
+</div>
+
+<a href="https://wa.me/918285007827?text=Hi%20I%20want%20more%20details"
+class="whatsapp-float" target="_blank">
+Chat on WhatsApp
+</a>
+
+<footer>
+  <p>📍 Sector 104, Surat Nagar Phase 2, Gurugram, Haryana</p>
+  <p>📞 8285007827 | ✉️ surajmanral2002@gmail.com</p>
+  <p>© 2026 Amma’s Knits</p>
+</footer>
+
+<script>
+/* HERO SLIDER AUTO ANIMATION */
+let slides = document.querySelectorAll('.slide');
+let index = 0;
+
+setInterval(() => {
+  slides[index].classList.remove('active');
+  index = (index + 1) % slides.length;
+  slides[index].classList.add('active');
+}, 4000);
+
+/* PRODUCTS */
+const products = [
+  {name:"Classic Wool Sweater", price:899, img:"https://i.ibb.co/t64c7xQ/1.jpg"},
+  {name:"Elegant Cardigan", price:999, img:"https://i.ibb.co/qLbx0H1h/2.jpg"},
+  {name:"Premium Pullover", price:1099, img:"https://i.ibb.co/rGcvDkH5/3.jpg"},
+  {name:"Winter Special Knit", price:1199, img:"https://i.ibb.co/zTBDnnb1/4.jpg"},
+  {name:"Soft Wool Blend", price:1299, img:"https://i.ibb.co/21JC6N5N/5.jpg"},
+  {name:"Designer Pattern Sweater", price:1399, img:"https://i.ibb.co/qLWjxDq7/6.jpg"},
+  {name:"Luxury Handmade Knit", price:1499, img:"https://i.ibb.co/WW0g5LLm/77.jpg"},
+  {name:"Festive Special Cardigan", price:1599, img:"https://i.ibb.co/dJrTVMf0/8.jpg"},
+  {name:"Limited Edition Sweater", price:1699, img:"https://i.ibb.co/8LDm9n0X/9.jpg"}
+];
+
+const productList = document.getElementById("productList");
+
+products.forEach(product=>{
+  productList.innerHTML += `
+    <div class="product">
+      <div class="product-img">
+        <img src="${product.img}">
+      </div>
+      <div class="product-details">
+        <h3>${product.name}</h3>
+        <div class="price">₹${product.price}</div>
+        <button onclick="window.open('https://wa.me/918285007827?text=Hi I want to order ${product.name}')">
+          Order on WhatsApp
+        </button>
+      </div>
+    </div>
+  `;
+});
+</script>
+
+</body>
+</html>
