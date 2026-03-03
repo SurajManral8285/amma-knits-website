@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Amma’s Knits</title>
+<meta name="description" content="Amma’s Knits – Handmade luxury sweaters, cardigans, and pullovers crafted with premium wool. Free delivery in Gurugram. Order via WhatsApp.">
+<!-- Open Graph for social sharing -->
+<meta property="og:title" content="Amma’s Knits – Luxury Handmade Sweaters">
+<meta property="og:description" content="Premium handcrafted sweaters, cardigans & pullovers. Order via WhatsApp for home delivery in Gurugram.">
+<meta property="og:image" content="https://i.ibb.co/t64c7xQ/1.jpg">
+<meta property="og:type" content="website">
 
 <style>
 * { box-sizing: border-box; }
@@ -92,6 +98,14 @@ body {
   overflow: hidden;
   box-shadow: 0 6px 25px rgba(0,0,0,0.07);
   transition: 0.4s ease;
+  opacity: 0; /* for fade-in animation */
+  transform: translateY(30px);
+}
+
+.product.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.8s ease;
 }
 
 .product:hover {
@@ -206,6 +220,13 @@ footer {
   padding: 30px 15px;
 }
 
+footer a {
+  color: #b76e79;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
 /* ===== RESPONSIVE ===== */
 @media(max-width:768px){
   .hero-text h1 { font-size: 28px; }
@@ -258,22 +279,27 @@ FREE DELIVERY IN GURUGRAM | HANDMADE WITH LOVE ❤️
   </div>
 </div>
 
+<!-- WhatsApp Float -->
 <a href="https://wa.me/918285007827?text=Hi%20I%20want%20more%20details"
 class="whatsapp-float" target="_blank">
 Chat on WhatsApp
 </a>
 
+<!-- FOOTER -->
 <footer>
   <p>📍 Sector 104, Surat Nagar Phase 2, Gurugram, Haryana</p>
   <p>📞 8285007827 | ✉️ surajmanral2002@gmail.com</p>
+  <p>
+    <a href="https://www.instagram.com/vlogs_bysuraj?igsh=MTF0cmZya2Y4dDh1dA==" target="_blank">Instagram</a> |
+    <a href="https://youtube.com/@vlogs_bysuraj?si=O4jW0I9vggU4xEDJ" target="_blank">YouTube</a>
+  </p>
   <p>© 2026 Amma’s Knits</p>
 </footer>
 
 <script>
-/* HERO SLIDER AUTO ANIMATION */
+/* HERO SLIDER */
 let slides = document.querySelectorAll('.slide');
 let index = 0;
-
 setInterval(() => {
   slides[index].classList.remove('active');
   index = (index + 1) % slides.length;
@@ -299,7 +325,7 @@ products.forEach(product=>{
   productList.innerHTML += `
     <div class="product">
       <div class="product-img">
-        <img src="${product.img}">
+        <img src="${product.img}" loading="lazy">
       </div>
       <div class="product-details">
         <h3>${product.name}</h3>
@@ -310,6 +336,19 @@ products.forEach(product=>{
       </div>
     </div>
   `;
+});
+
+/* FADE-IN ANIMATION ON SCROLL */
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.product').forEach(prod=>{
+  observer.observe(prod);
 });
 </script>
 
